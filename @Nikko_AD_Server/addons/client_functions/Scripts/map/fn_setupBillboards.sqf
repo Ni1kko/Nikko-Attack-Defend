@@ -4,6 +4,7 @@
 	Ni1kko@outlook.com
 */
 
+
 //
 //--- EAST
 //
@@ -12,8 +13,8 @@
 	(_x#0) enableSimulation true;
 	(_x#0) setObjectTexture[0,_x#1];
 } forEach [
-	[EastBillboard_Middle,""],
-	[EastBillboard_Right,""]
+	[EastBillboard_Middle,"textures\billboards\AttackDefend.paa"],
+	[EastBillboard_Right,"textures\billboards\AttackDefendControls.paa"]
 ];
 
 
@@ -25,6 +26,6 @@
 	(_x#0) enableSimulation true;
 	(_x#0) setObjectTexture[0,_x#1];
 } forEach [
-	[WestBillboard_Middle,""],
-	[WestBillboard_Right,""]
+	[WestBillboard_Middle,"textures\billboards\AttackDefend.paa"],
+	[WestBillboard_Right,"textures\billboards\AttackDefendControls.paa"]
 ];

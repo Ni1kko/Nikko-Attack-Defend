@@ -5,12 +5,12 @@
 */
 
 //
-//--- All Stand
+//--- All Stands
 //
 {
 	_x allowDamage false;
 	_x enableSimulation true;
-	_x setObjectTexture[0,""];
+	_x setObjectTexture[0,"textures\infostands\Infostand.paa"];
 } forEach [
 	EastInfoStand,
 	WestInfoStand
@@ -19,10 +19,10 @@
 //
 //--- EAST
 //
-EastInfoStand addAction ["Test East",{hint str playerside}];
+EastInfoStand addAction ["East Menu",{hint str playerside}];
 
 
 //
 //--- WEST
 //
-WestInfoStand addAction ["Test West",{hint str playerside}];
+WestInfoStand addAction ["West Menu",{hint str playerside}];
