@@ -9,6 +9,9 @@ params[
 	["_isLiveServer",true,[false]]
 ];
 
+//Start ExtDB3
+[] CALL NikkoServer_script_initDatabase;
+
 //Add Connection Event Handlers
 NikkoServer_var_ClientConnected = call compile ("addMissionEventHandler ['PlayerConnected', {[_this#1,_this#2,_this#3,_this#4,"+str(_clientData)+","+str(_isLiveServer)+"] spawn NikkoServer_script_onplayerconnected}]");
 NikkoServer_var_ClientDisconnected = call compile ("addMissionEventHandler ['PlayerDisconnected', {[_this#1,_this#2,_this#3,_this#4] spawn NikkoServer_script_onplayerdisconnected}]");
