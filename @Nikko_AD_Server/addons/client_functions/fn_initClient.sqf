@@ -8,7 +8,9 @@ params [
 ];
 
 //set player vars
-_player setVariable ["playerSteamID",getPlayerUID player];
+_player enableFatigue false;
+_player setVariable ["playerSteamID",getPlayerUID _player];
+
 
 //Setup Map Object
 [] call NikkoClient_script_setupBillboards;
