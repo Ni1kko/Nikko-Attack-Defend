@@ -4,17 +4,23 @@
 	Ni1kko@outlook.com
 */
 
- 
+//Init loadout classes
+[] call NikkoClient_script_setupLoadouts;
+
 //
 //--- EAST
 //
 {
 	(_x#0) allowDamage false;
 	(_x#0) enableSimulation true;
+	clearWeaponCargoGlobal (_x#0);
+	clearMagazineCargoGlobal (_x#0);
+	clearItemCargoGlobal (_x#0);
+	clearBackPackCargoGlobal (_x#0);
 	(_x#0) addAction (_x#1);
 } forEach [
-	[EastWeaponCreate_Left, ["Test East WeaponCreate Left",{hint str playerside},[],4] ],
-	[EastWeaponCreate_Right, ["Test East WeaponCreate Right",{hint str playerside},[],4] ]
+	[ EastWeaponCreate_Left, ["East WeaponCreate Left", NikkoClient_script_openWeaponMenu, [], 4] ],
+	[ EastWeaponCreate_Right, ["East WeaponCreate Right", NikkoClient_script_openWeaponMenu, [], 4] ]
 ];
 
 
@@ -24,8 +30,12 @@
 {
 	(_x#0) allowDamage false;
 	(_x#0) enableSimulation true;
+	clearWeaponCargoGlobal (_x#0);
+	clearMagazineCargoGlobal (_x#0);
+	clearItemCargoGlobal (_x#0);
+	clearBackPackCargoGlobal (_x#0);
 	(_x#0) addAction (_x#1);
 } forEach [
-	[WestWeaponCreate_Left, ["Test West WeaponCreate Left",{hint str playerside},[],4] ],
-	[WestWeaponCreate_Right, ["Test West WeaponCreate Right",{hint str playerside},[],4] ]
+	[ WestWeaponCreate_Left, ["West WeaponCreate Left", NikkoClient_script_openWeaponMenu, [], 4] ],
+	[ WestWeaponCreate_Right, ["West WeaponCreate Right", NikkoClient_script_openWeaponMenu, [], 4] ]
 ];
