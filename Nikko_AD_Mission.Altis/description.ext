@@ -1,0 +1,28 @@
+respawnDialog = false;
+onLoadIntroTime = 0;
+
+//RYN, NIKKO
+enableDebugConsole[] = {"76561198283428669","76561199109931625"};
+
+class CfgDebriefing
+{  
+	class End1
+	{
+		title = "Your Team Won!";
+		//subtitle = "";
+		description = "Try win again! Next round will start shortly.";
+		//backgroundPicture = "";
+		//picture = "b_inf";
+		//pictureColor[] = {0.0,0.3,0.6,1};
+	};
+	
+	class End2
+	{
+		title = "Your Team Lost!";
+		//subtitle = "";
+		description = "Do better next time! Next round will start shortly.";
+		//backgroundPicture = "";
+		//picture = "b_inf";
+		//pictureColor[] = {0.0,0.3,0.6,1};
+	};
+};
