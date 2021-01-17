@@ -10,6 +10,11 @@ params [
 //set player vars
 _player setVariable ["playerSteamID",getPlayerUID player];
 
+//Setup Map Object
+[] call NikkoClient_script_setupBillboards;
+[] call NikkoClient_script_setupInfoStands;
+[] spawn NikkoClient_script_setupWeaponBoxes;
+
 //Enable player
 [_player,true] remoteExecCall ["enableDynamicSimulation",2];
 [_player,true] remoteExecCall ["enableSimulationGlobal",2];
