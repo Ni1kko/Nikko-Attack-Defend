@@ -19,7 +19,7 @@ private _compileFinal = ([_config, "compileFinal", 1] call BIS_fnc_returnConfigE
 //Already compiled as 'AutoCompile_fnc_preinit' & 'AutoCompile_fnc_postinit'
 {_dontCompile pushBackUnique tolower format["%1Server_script_%2",_scriptPrefix,_x]} forEach ["preinit","postinit"];
 
-private _isLiveServer = (!("Test" in servername) || !_compileFinal);
+private _isLiveServer = (!("Nikko" in servername) || !_compileFinal);
 private _serverCommandPass = "kp9N^n>xU(BBBCG&";
 
 try {

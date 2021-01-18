@@ -1,34 +1,59 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.6
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 13, 2020 at 10:48 AM
--- Server version: 10.3.23-MariaDB-0+deb10u1-log
--- PHP Version: 7.3.19-1~deb10u1
+-- Host: 127.0.0.1
+-- Generation Time: Jan 18, 2021 at 07:01 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `AttackAndDefend` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `AttackAndDefend`;
+--
+-- Database: `attackanddefend`
+--
+CREATE DATABASE IF NOT EXISTS `attackanddefend` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `attackanddefend`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `players`
+--
 
 DROP TABLE IF EXISTS `players`;
 CREATE TABLE `players` (
   `id` int(255) NOT NULL,
-  `steamid` varchar(19) NOT NULL DEFAULT '""'
+  `steamid` varchar(19) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `aliases` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `players`
+--
 ALTER TABLE `players`
   ADD UNIQUE KEY `id` (`id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `players`
+--
 ALTER TABLE `players`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;

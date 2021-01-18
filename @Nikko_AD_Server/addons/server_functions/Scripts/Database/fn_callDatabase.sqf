@@ -4,59 +4,52 @@
 	Ni1kko@outlook.com
 */
 
-params [
-	["_type", "", [""]],
-	["_query", [], [[]]],
-	["_key", 0, [0]]
-];
+ params[
+	['_type','',['']],
+	['_queryStmt','',['']],
+	['_multiarr',false,[false]]
+];  
 
-//["SELECT",["id","players",format["steamid='%1'",getPlayerUID player]],uiNamespace getVariable ["NikkoServer_var_DBKey",0]] call NikkoServer_script_callDatabase;
-//["UPDATE",["players",formatText["name='%1'",name player],formatText["steamid='%1'",getPlayerUID player]],uiNamespace getVariable ["NikkoServer_var_DBKey",0]] call NikkoServer_script_callDatabase;
-switch (_type) do {
-	case "UPDATE": {
-		_query params [
-			["_table", "", [""]],
-			["_data", nil, [nil,formatText[""]]],
-			["_conditions", nil, [nil,formatText[""]]]
-		];
-		if!(isNil "_conditions") then {
-			_conditions = formatText["WHERE %1",_conditions];
-		};
-		_query = formatText["UPDATE %1 SET %2 %3",_table,_data,_conditions];
-		"extDB3" callExtension format["1:%1:%2",_key,_query];
-	};
-	case "INSERT": {
-		//_query = ["players","steamid",formatText["'%1','%2'",str(_uid),str(_name)]];
-		_query params [
-			["_table", "", [""]],
-			["_columns", "", [""]],
-			["_values", nil, [nil,formatText[""]]]
-		];
-		_query = formatText["INSERT INTO %1 (%2) VALUES (%3)",_table,_columns,_values];
-		"extDB3" callExtension format["1:%1:%2",_key,_query];
+_type = toLower(_type);  
+if(_type isEqualTo 'insert')then{
+	_queryStmt = ((toUpper(_type)) + (toString([32])) + ('INTO') + (toString([32])) + (_queryStmt));
+}else{
+	_queryStmt = ((toUpper(_type)) + (toString([32])) + (_queryStmt));
+};
 
-	};
-	case "SELECT": {
-		//_query = ["id,steamid","players",formatText["steamid='%1'",str(_uid)]];
-		_query params [
-			["_columns", "", [""]],
-			["_table", "", [""]],
-			["_conditions", nil, [nil,formatText[""]]]
-		];
-		if!(isNil "_conditions") then {
-			_conditions = formatText["WHERE %1",_conditions];
-		};  
-		_query = formatText["SELECT %1 FROM %2 %3",_columns,_table,_conditions];
-		_return = "extDB3" callExtension format["0:%1:%2",_key,_query];
-		
-		//Fail safe
-		if( not(_return isEqualTo ""))then{
-			_return = (call compile _return)#1;
-		}else{
-			diag_log "Temp DB Output: FAILURE!";
-		};
+private _key = ('extDB3' callExtension (format['%1:'+(uiNamespace getVariable ['NikkoServer_var_DBKey',''])+':%2',(if(_type isEqualTo 'select')then{2}else{1}),_queryStmt]));  
+if !(_type isEqualTo 'select') exitWith {true};
+_key = call compile format ['%1',_key];
+_key = (_key select 1);
+_queryResult =  ('extDB3' callExtension (format['4:%1', _key]));  
 
-		//Return
-		_return;
+if (_queryResult isEqualTo '[3]') then {
+	for '_i' from 0 to 1 step 0 do {
+		if (!(_queryResult isEqualTo '[3]')) exitWith {};
+		_queryResult =  ('extDB3' callExtension (format ['4:%1', _key]));
 	};
 };
+
+if (_queryResult isEqualTo '[5]') then {
+	_loop = true;
+	for '_i' from 0 to 1 step 0 do {  
+		_queryResult = '';
+		for '_i' from 0 to 1 step 0 do {
+			_pipe =  ('extDB3' callExtension (format ['5:%1', _key]));
+			if (_pipe isEqualTo '') exitWith {_loop = false};
+			_queryResult = _queryResult + _pipe;
+		};
+	if (!_loop) exitWith {};
+	};
+};
+
+_queryResult = call compile _queryResult;
+if ((_queryResult select 0) isEqualTo 0) exitWith {diag_log format ['extDB3: Protocol Error: %1', _queryResult]; []};
+
+_return = (_queryResult select 1);
+
+if (!_multiarr && count _return > 0) then {
+	_return = (_return select 0);
+};
+
+_return;
