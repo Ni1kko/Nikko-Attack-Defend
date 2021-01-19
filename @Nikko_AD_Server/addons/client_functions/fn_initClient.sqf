@@ -11,6 +11,7 @@ waitUntil {!isNull(uiNamespace getVariable "RscDisplayMission") && {getclientsta
 
 //set player vars
 _player enableFatigue false;
+_player enableStamina false;
 _player setVariable ["playerSteamID",getPlayerUID _player];
 
 //Setup Map Object
