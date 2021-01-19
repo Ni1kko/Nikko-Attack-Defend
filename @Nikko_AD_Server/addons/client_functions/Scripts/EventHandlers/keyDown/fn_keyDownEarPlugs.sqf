@@ -4,4 +4,3 @@
 	Ni1kko@outlook.com
 */
 
-hint "Ear plugs";
