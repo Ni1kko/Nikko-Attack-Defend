@@ -8,7 +8,7 @@
 
 NikkoClient_KeyDown_Functions = compileFinal str ([
 	//["NikkoClient_script_function", [dik,shift,ctrl,alt]]
-	["NikkoClient_script_keyDownEarPlugs",[DIK_O,true,false,false]],
+	["NikkoClient_script_keyDownEarPlugs",[DIK_O,true,false,false]],//Also Defined in fn_keyUpHandler.sqf
 	["NikkoClient_script_keyDownGrassToggle",[DIK_T,true,false,false]],
 	["NikkoClient_script_keyDownJump",[DIK_V,true,false,false]],
 	["NikkoClient_script_keyDownTeamHex",[DIK_GRAVE,false,false,false]]

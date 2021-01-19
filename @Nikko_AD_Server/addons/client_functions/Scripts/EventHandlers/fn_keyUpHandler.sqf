@@ -8,7 +8,7 @@
 
 NikkoClient_KeyUp_Functions = compileFinal str ([
 	//["NikkoClient_script_function", [dik,shift,ctrl,alt]]
-	["NikkoClient_script_keyUpEarPlugs",[DIK_O,true,false,false]]
+	["NikkoClient_script_keyUpEarPlugs",[DIK_O,true,false,false]]//Also Defined in fn_keyDownHandler.sqf
 ]);
 
 (findDisplay 46) displaySetEventHandler ["KeyUp","
