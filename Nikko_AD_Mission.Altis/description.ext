@@ -4,6 +4,9 @@ onLoadIntroTime = 0;
 //RYN, NIKKO
 enableDebugConsole[] = {"76561198283428669","76561199109931625"};
 
+#include "ui\ui_defines.hpp"
+#include "ui\ui_menus.hpp"
+
 class CfgDebriefing
 {  
 	class End1
