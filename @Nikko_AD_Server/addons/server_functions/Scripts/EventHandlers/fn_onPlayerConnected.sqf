@@ -73,13 +73,12 @@ private _databaseData = [
  
 	//initFunctions
 	{
-		private _code = preprocessFile (_x#1); 
 		//store time in local var
 		private _systemTimeUTC = systemTimeUTC;
 		//select just the hrs and mins from the time array and format in too a comment
 		private _compileTime = ("comment 'Auto Compiled @"+(format["%1:%2%3",_systemTimeUTC#3,if((_systemTimeUTC#4) < 10)then{format["0%1",_systemTimeUTC#4]}else{_systemTimeUTC#4},if((_systemTimeUTC#3) > 11) then {"PM"}else{"AM"}])+"';");
 		//add compileTime comment to script
-		_code = (_compileTime + (toString [13, 10]) + _code);
+		private _code = (_compileTime + (toString [13, 10]) + (_x#1));
 		//
 		missionNamespace setVariable [_x#0, ([compile _code,compileFinal _code] select _compileFinal)];
 		waitUntil{!isNil {missionNamespace getVariable (_x#0)}};
