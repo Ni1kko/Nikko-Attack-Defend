@@ -20,6 +20,10 @@ _player setVariable ["playerSteamID",getPlayerUID _player];
 
 //Key handlers
 [] call NikkoClient_script_keyDownHandler;
+[] call NikkoClient_script_keyUpHandler;
+
+//Mouse handlers
+[] call NikkoClient_script_mouseScrollHandler;
 
 //Enable player
 [_player,true] remoteExecCall ["enableDynamicSimulation",2];
