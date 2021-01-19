@@ -4,10 +4,8 @@
 	Ni1kko@outlook.com
 */
 
-#include "\a3\ui_f\hpp\definedikcodes.inc"
-
 NikkoClient_mouseScroll_Functions = compileFinal str ([
-	//["NikkoClient_script_function", "condition"
+	//["NikkoClient_script_function", "boolean condition"]
 	["NikkoClient_script_mouseScrollEarPlugs","(player getVariable ['NikkoClient_var_earplugsScroll',false])"]
 ]);
 
