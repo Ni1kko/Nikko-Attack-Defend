@@ -39,6 +39,8 @@ if(count _playerQuery <= 0)then{
 		["UPDATE",_playerUpdateStatment] call NikkoServer_script_callDatabase;
 		_playerQuery = ["SELECT",_playerQueryStatment] call NikkoServer_script_callDatabase;
 	};
+
+	_playerQuery set [2,_aliases];
 };
 
 if(count _playerQuery <= 0)exitWith{
