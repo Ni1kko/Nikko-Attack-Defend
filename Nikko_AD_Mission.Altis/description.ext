@@ -29,3 +29,15 @@ class CfgDebriefing
 		//pictureColor[] = {0.0,0.3,0.6,1};
 	};
 };
+
+class CfgSounds
+{
+	sounds[] = {};
+	class caching
+	{
+		name = "caching";
+		sound[] = {"\sounds\purchase.ogg",0.9,1};
+		titles[] = {};
+	};
+};
+    

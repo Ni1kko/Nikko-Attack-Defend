@@ -32,7 +32,7 @@ if (uiNamespace getVariable["Weapon_Shop_Filter",0] == 1) then {
 	};
 	if (_sellCount > 0) then {
 		player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) + _warpointsCount)];
-		//player say3D "caching";
+		player say3D "caching";
 
 		titleText [format["You sold a %1 (%3/%4) for %2Warpoints",_itemInfo select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_sellCount,_numberOfItems],"PLAIN"];
 		[nil,(uiNamespace getVariable["Weapon_Shop_Filter",0])] call NikkoClient_script_weaponShopFilter; //Update the menu.
@@ -54,7 +54,7 @@ if (uiNamespace getVariable["Weapon_Shop_Filter",0] == 1) then {
 
 	if (_buyCount > 0) then {
 		player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) - _warpointsCount)];
-		//player say3D "caching";
+		player say3D "caching";
 		titleText [format["You bought a %1 (%3/%4) for %2Warpoints",_itemInfo select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_buyCount,_numberOfItems],"PLAIN"];
 	} else {
 		titleText ["Failed to buy","PLAIN"]

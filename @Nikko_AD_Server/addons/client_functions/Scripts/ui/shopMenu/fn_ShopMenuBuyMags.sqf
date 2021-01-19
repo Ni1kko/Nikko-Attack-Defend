@@ -35,7 +35,7 @@ for "_x" from 1 to _numberofmags do {
 //Check they bought somthing
 if (_buyCount > 0) then {
 	player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) - _warpointsCount)];
-	//player say3D "caching";
+	player say3D "caching";
 	titleText [format["You bought a %1 (%3/%4) for %2Warpoints",([_item] call NikkoClient_script_itemDetails) select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_buyCount,_numberofmags],"PLAIN"];
 } else {
 	titleText ["failed to buy","PLAIN"]
