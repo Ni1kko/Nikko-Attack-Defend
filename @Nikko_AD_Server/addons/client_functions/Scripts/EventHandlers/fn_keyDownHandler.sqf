@@ -14,7 +14,7 @@ NikkoClient_KeyDown_Functions = compileFinal str ([
 	["NikkoClient_script_keyDownTeamHex",[DIK_GRAVE,false,false,false]]
 ]);
 
-(findDisplay 46) displaySetEventHandler ["KeyDown","
+(uiNamespace getVariable "RscDisplayMission") displaySetEventHandler ["KeyDown","
 	private _handled = false;
 	private _code = ({ nil; if (_x#1 isEqualTo (_this select [1, 4])) exitWith {missionNamespace getvariable [_x#0,scriptNull]} } forEach (call NikkoClient_KeyDown_Functions));
 	if !(isNil '_code')then {

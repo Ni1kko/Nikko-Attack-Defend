@@ -7,7 +7,7 @@ params [
     ["_player",player,[objNull]]
 ];
 
-waitUntil {!isNull(findDisplay 46) && {getclientstatenumber >= 10}};
+waitUntil {!isNull(uiNamespace getVariable "RscDisplayMission") && {getclientstatenumber >= 10}};
 
 //set player vars
 _player enableFatigue false;

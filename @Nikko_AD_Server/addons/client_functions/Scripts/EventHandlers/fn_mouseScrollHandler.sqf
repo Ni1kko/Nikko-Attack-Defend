@@ -9,7 +9,7 @@ NikkoClient_mouseScroll_Functions = compileFinal str ([
 	["NikkoClient_script_mouseScrollEarPlugs","(player getVariable ['NikkoClient_var_earplugsScroll',false])"]
 ]);
 
-(findDisplay 46) displayAddEventHandler ["MouseZChanged","
+(uiNamespace getVariable "RscDisplayMission") displayAddEventHandler ["MouseZChanged","
     private _handled = false;
     private _condition = true;
 	private _code = ({ nil; if((_x#1) != '')then{_condition = call compile (_x#1)}; if _condition exitWith {missionNamespace getvariable [_x#0,scriptNull]} } forEach (call NikkoClient_mouseScroll_Functions));
