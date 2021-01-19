@@ -34,7 +34,8 @@ CREATE TABLE `players` (
   `id` int(255) NOT NULL,
   `steamid` varchar(19) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `aliases` text DEFAULT NULL
+  `aliases` text DEFAULT NULL,
+  `warpoints` int(11) NOT NULL DEFAULT 2500
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

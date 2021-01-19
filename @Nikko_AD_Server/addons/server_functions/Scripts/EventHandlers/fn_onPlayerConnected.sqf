@@ -16,7 +16,7 @@ params [
 //Players only
 if (_owner < ([3,2] select is3DENMultiplayer)) exitWith {false};
 
-private _playerQueryStatment = format ["steamid, name, aliases FROM players WHERE steamid='%1'",_uid];
+private _playerQueryStatment = format ["steamid, name, aliases, warpoints FROM players WHERE steamid='%1'",_uid];
 private _playerQuery = ["SELECT",_playerQueryStatment] call NikkoServer_script_callDatabase;
 
 if(count _playerQuery <= 0)then{
@@ -27,7 +27,8 @@ if(count _playerQuery <= 0)then{
 	_playerQuery params [
 		"_dbsteamid",
 		"_dbname",
-		"_dbaliases"
+		"_dbaliases",
+		"_warpoints"
 	];
 
 	private _aliases = [_dbaliases] call NikkoServer_script_DBHelper_mresToArray;
@@ -49,7 +50,7 @@ private _databaseData = [
 ];
 
 //Send preinit
-[(_this + _databaseData), {
+[(_this + [_databaseData]), {
 	params [
 		['_uid',""],
 		['_name',""],
@@ -70,7 +71,19 @@ private _databaseData = [
 	_databaseData params[
 		["_playerQuery",[]]
 	];
- 
+
+	//Debug
+	databaseDataDebug = _databaseData;
+
+	_playerQuery params [
+		"_dbsteamid",
+		"_dbname",
+		"_dbaliases",
+		"_warpoints"
+	];
+	
+	player setVariable ["NikkoClient_var_warpoints",_warpoints,true];
+
 	//initFunctions
 	{
 		//store time in local var
