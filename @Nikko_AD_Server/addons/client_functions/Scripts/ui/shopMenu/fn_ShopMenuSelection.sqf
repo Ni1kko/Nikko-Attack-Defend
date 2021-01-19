@@ -23,14 +23,14 @@ _magsBG ctrlShow false;
 private _item = _control lbData _index;
 private _itemInfo = [_item] call NikkoClient_script_itemDetails;
 
-//[_item,_itemInfo#4] spawn NikkoClient_script_shopBoxRotate;
+[_item,_itemInfo#4] spawn NikkoClient_script_shopBoxRotate;
 
 private _infoDesc =(if((_itemInfo#3) != "")then{format ["<br/><br/>%1",_itemInfo#3]}else{""});
 
 private _shop = (if(missionNamespace getVariable ["NikkoClient_var_isAttacking",false])then{"Atackers"}else{"Defenders"});
 
 if ((uiNamespace getVariable["Weapon_Shop_Filter",0]) == 1) then {
-	_priceTag ctrlSetStructuredText parseText format ["<t size='0.85' color='%3'>Price: <t color='#3f6b00'>$%1</t>%2</t>",0,_infoDesc,(profileNamespace getVariable ['NikkoClient_UI_TXT_HTML','#000000'])];
+	_priceTag ctrlSetStructuredText parseText format ["<t size='0.85' color='%3'>Price: <t color='#3f6b00'>%1Warpoints</t>%2</t>",0,_infoDesc,(profileNamespace getVariable ['NikkoClient_UI_TXT_HTML','#000000'])];
 } else {
 	private _price = -1;
 	{ 
@@ -40,7 +40,7 @@ if ((uiNamespace getVariable["Weapon_Shop_Filter",0]) == 1) then {
 	} foreach ([missionConfigFile >> "NikkoClient_CFG_Shops" >> _shop, "items" , []] call BIS_fnc_returnConfigEntry);
 
 	if (_price > (player getVariable ["NikkoClient_var_warpoints",0])) then {
-		_priceTag ctrlSetStructuredText parseText format ["<t size='0.85' color='%4'>Price: <t color='#ff0000'>%1Warpoints</t><br/>Lacking: <t color='#3f6b00'>$%2</t>%3</t>",[_price] call NikkoClient_script_numberSafe,[_price - (player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe,_infoDesc,(profileNamespace getVariable ['NikkoClient_UI_TXT_HTML','#000000'])];
+		_priceTag ctrlSetStructuredText parseText format ["<t size='0.85' color='%4'>Price: <t color='#ff0000'>%1Warpoints</t><br/>Lacking: <t color='#3f6b00'>%2Warpoints</t>%3</t>",[_price] call NikkoClient_script_numberSafe,[_price - (player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe,_infoDesc,(profileNamespace getVariable ['NikkoClient_UI_TXT_HTML','#000000'])];
 	} else{
 		_priceTag ctrlSetStructuredText parseText format ["<t size='0.85' color='%3'>Price: <t color='#3f6b00'>%1Warpoints</t>%2</t>",[_price] call NikkoClient_script_numberSafe,_infoDesc,(profileNamespace getVariable ['NikkoClient_UI_TXT_HTML','#000000'])];
 	};

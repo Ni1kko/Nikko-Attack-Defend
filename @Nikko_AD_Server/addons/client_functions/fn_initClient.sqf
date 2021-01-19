@@ -26,6 +26,15 @@ _player setVariable ["playerSteamID",getPlayerUID _player,true];
 //Mouse handlers
 [] call NikkoClient_script_mouseScrollHandler;
 
+//Temp strip player
+removeAllWeapons _player;
+removeUniform _player;
+removeBackPack _player;
+removeVest _player;
+removeHeadGear _player;
+removeAllAssignedItems _player;
+removeGoggles _player;
+
 //Enable player
 [_player,true] remoteExecCall ["enableDynamicSimulation",2];
 [_player,true] remoteExecCall ["enableSimulationGlobal",2];

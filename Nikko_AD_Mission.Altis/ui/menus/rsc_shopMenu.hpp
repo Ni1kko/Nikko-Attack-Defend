@@ -9,52 +9,32 @@ class NikkoClient_CFG_Shops {
 	class Atackers {
 		displayName = "Atackers Shop";
 		items[] = {
-			{ "hgun_Rook40_F", 1},
-			{ "hgun_P07_F", 10},
-			{ "hgun_PDW2000_F", 100},
-			{ "SMG_02_F", 21},
-			{ "hgun_mas_bhp_F", 41},
-			{ "hgun_mas_m9_F", 51},
-			{ "hgun_mas_glock_F", 61},
-			{ "hgun_mas_mak_F", 71},
-			{ "hgun_mas_uzi_F", 16},
-			{ "hgun_Pistol_heavy_02_F", 51},
-			{ "hgun_Pistol_heavy_01_F", 175},
-			{ "hgun_mas_mp7_F", 153},
-			{ "hgun_mas_mp7p_F", 165},
-			{ "SMG_01_F", 153},
-			{ "arifle_TRG21_F", 154},
-			{ "arifle_Mk20_plain_F", 145},
-			{ "arifle_mas_mp5_d", 133},
-			{ "arifle_mas_m1014", 132},
-			{ "arifle_mas_m4vlt", 11},
-			{ "acc_flashlight", 1114}
+			{ "hgun_Rook40_F", 100, 75},
+			{ "hgun_P07_F", 115, 80},
+			{ "hgun_PDW2000_F", 180, 100},
+			{ "SMG_02_F", 200, 120},
+			{ "hgun_Pistol_heavy_02_F", 100, 70},
+			{ "hgun_Pistol_heavy_01_F", 175, 125}, 
+			{ "SMG_01_F", 255, 200},
+			{ "arifle_TRG21_F", 500, 375},
+			{ "arifle_Mk20_plain_F", 800, 425},
+			{ "acc_flashlight", 50, 35}
 		};
 	};
 
 	class Defenders {
 		displayName = "Defenders Shop";
 		items[] = {
-			{ "hgun_Rook40_F", 1},
-			{ "hgun_P07_F", 10},
-			{ "hgun_PDW2000_F", 100},
-			{ "SMG_02_F", 21},
-			{ "hgun_mas_bhp_F", 41},
-			{ "hgun_mas_m9_F", 51},
-			{ "hgun_mas_glock_F", 61},
-			{ "hgun_mas_mak_F", 71},
-			{ "hgun_mas_uzi_F", 16},
-			{ "hgun_Pistol_heavy_02_F", 51},
-			{ "hgun_Pistol_heavy_01_F", 175},
-			{ "hgun_mas_mp7_F", 153},
-			{ "hgun_mas_mp7p_F", 165},
-			{ "SMG_01_F", 153},
-			{ "arifle_TRG21_F", 154},
-			{ "arifle_Mk20_plain_F", 145},
-			{ "arifle_mas_mp5_d", 133},
-			{ "arifle_mas_m1014", 132},
-			{ "arifle_mas_m4vlt", 11},
-			{ "acc_flashlight", 1114}
+			{ "hgun_Rook40_F", 100, 75},
+			{ "hgun_P07_F", 115, 80},
+			{ "hgun_PDW2000_F", 180, 100},
+			{ "SMG_02_F", 200, 120},
+			{ "hgun_Pistol_heavy_02_F", 100, 70},
+			{ "hgun_Pistol_heavy_01_F", 175, 125}, 
+			{ "SMG_01_F", 255, 200},
+			{ "arifle_TRG21_F", 500, 375},
+			{ "arifle_Mk20_plain_F", 800, 425},
+			{ "acc_flashlight", 50, 35}
 		};
 	};
 };

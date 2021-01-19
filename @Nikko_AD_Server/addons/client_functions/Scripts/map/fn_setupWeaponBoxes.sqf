@@ -5,7 +5,7 @@
 */
 
 //Init loadout classes
-[] call NikkoClient_script_setupLoadouts;
+//[] call NikkoClient_script_setupLoadouts;
 
 //
 //--- EAST
@@ -19,8 +19,8 @@
 	clearBackPackCargoGlobal (_x#0);
 	(_x#0) addAction (_x#1);
 } forEach [
-	[ EastWeaponCreate_Left, ["East WeaponCreate Left", NikkoClient_script_openWeaponMenu, [], 4] ],
-	[ EastWeaponCreate_Right, ["East WeaponCreate Right", NikkoClient_script_openWeaponMenu, [], 4] ]
+	[ EastWeaponCreate_Left, ["Open Shop", NikkoClient_script_ShopMenuCreate, [], 4] ],
+	[ EastWeaponCreate_Right, ["Open Shop", NikkoClient_script_ShopMenuCreate, [], 4] ]
 ];
 
 
@@ -36,6 +36,6 @@
 	clearBackPackCargoGlobal (_x#0);
 	(_x#0) addAction (_x#1);
 } forEach [
-	[ WestWeaponCreate_Left, ["West WeaponCreate Left", NikkoClient_script_openWeaponMenu, [], 4] ],
-	[ WestWeaponCreate_Right, ["West WeaponCreate Right", NikkoClient_script_openWeaponMenu, [], 4] ]
+	[ WestWeaponCreate_Left, ["Open Shop", NikkoClient_script_ShopMenuCreate, [], 4] ],
+	[ WestWeaponCreate_Right, ["Open Shop", NikkoClient_script_ShopMenuCreate, [], 4] ]
 ];
