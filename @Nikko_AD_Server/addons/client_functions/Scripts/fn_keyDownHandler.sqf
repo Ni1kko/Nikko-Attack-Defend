@@ -4,9 +4,14 @@
 	Ni1kko@outlook.com
 */
 
+#include "\a3\ui_f\hpp\definedikcodes.inc"
+
 NikkoClient_KeyDown_Functions = compileFinal str ([
 	//["NikkoClient_script_function", [dik,shift,ctrl,alt]]
-	["NikkoClient_script_keyDownTest",[35,true,false,false]] // H + Shift  
+	["NikkoClient_script_keyDownEarPlugs",[DIK_O,true,false,false]],
+	["NikkoClient_script_keyDownGrassToggle",[DIK_T,true,false,false]],
+	["NikkoClient_script_keyDownJump",[DIK_V,true,false,false]],
+	["NikkoClient_script_keyDownTeamHex",[DIK_GRAVE,false,false,false]]
 ]);
 
 (findDisplay 46) displaySetEventHandler ["KeyDown","
@@ -17,6 +22,6 @@ NikkoClient_KeyDown_Functions = compileFinal str ([
 		_handled = true;
 	};  
 	_handled
-"]; 
+"];
 
 nil
