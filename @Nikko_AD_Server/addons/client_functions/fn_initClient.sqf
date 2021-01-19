@@ -7,12 +7,12 @@ params [
     ["_player",player,[objNull]]
 ];
 
-waitUntil {!isNull(uiNamespace getVariable "RscDisplayMission") && {getclientstatenumber >= 10}};
+waitUntil {!isNull(uiNamespace getVariable ["RscDisplayMission",displayNull]) && {getclientstatenumber >= 10}};
 
 //set player vars
 _player enableFatigue false;
 _player enableStamina false;
-_player setVariable ["playerSteamID",getPlayerUID _player];
+_player setVariable ["playerSteamID",getPlayerUID _player,true];
 
 //Setup Map Object
 [] call NikkoClient_script_setupBillboards;
