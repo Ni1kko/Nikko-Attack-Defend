@@ -9,32 +9,164 @@ class NikkoClient_CFG_Shops {
 	class Atackers {
 		displayName = "Atackers Shop";
 		items[] = {
+			//
+			//GUNS
+			//
+
+			//Pistols
 			{ "hgun_Rook40_F", 100, 75},
 			{ "hgun_P07_F", 115, 80},
 			{ "hgun_PDW2000_F", 180, 100},
-			{ "SMG_02_F", 200, 120},
 			{ "hgun_Pistol_heavy_02_F", 100, 70},
 			{ "hgun_Pistol_heavy_01_F", 175, 125}, 
+
+			//SMG'S
+			{ "SMG_02_F", 200, 120},
 			{ "SMG_01_F", 255, 200},
+
+			//Assault rifles
 			{ "arifle_TRG21_F", 500, 375},
 			{ "arifle_Mk20_plain_F", 800, 425},
-			{ "acc_flashlight", 50, 35}
+			{ "arifle_MXM_Black_F", 1000, 825},
+			{ "arifle_MX_SW_Black_F", 1100, 855},
+			{ "arifle_ARX_blk_F", 1300, 975},
+			{ "arifle_SPAR_03_blk_F", 1500, 1225},
+
+			//LMG'S
+			{ "LMG_Mk200_F", 950, 525},
+			{ "LMG_Zafir_F", 975, 625},	
+
+			//Sniper-Marksman rifles
+			{ "srifle_DMR_03_F", 1800, 1425},
+			{ "srifle_EBR_F", 1900, 1500},
+			{ "srifle_DMR_06_olive_F", 1950, 1525},
+			
+			//Attachments
+			{ "optic_Arco_blk_F", 150, 115},
+			{ "muzzle_snds_H", 65, 35},
+			{ "bipod_01_F_blk", 150, 35},
+			{ "muzzle_snds_65_TI_blk_F", 65, 45},
+			{ "optic_Hamr", 175, 100},
+			{ "optic_MRCO", 175, 100},
+			{ "acc_flashlight", 50, 35},
+
+  
+			//
+			//Wearables
+			//
+
+			//Helmets
+			{ "H_HelmetSpecB_blk", 150, 85},
+			{ "H_Beret_blk", 50, 15},
+			{ "H_Cap_police", 20, 5},
+			{ "H_Bandanna_gry", 20, 5},
+
+			//Goggles
+			{ "G_Balaclava_TI_G_blk_F", 50, 25},
+			{ "G_Bandanna_aviator", 50, 25},
+			{ "G_Aviator", 50, 25},
+			{ "G_Bandanna_blk", 50, 25},
+
+			//Uniforms
+			{ "U_B_CTRG_Soldier_F", 250, 135},
+			{ "U_B_GEN_Commander_F", 250, 135},
+			{ "U_B_CTRG_1", 170, 85},
+			{ "U_B_CombatUniform_mcam_tshirt", 150, 75},
+
+			//Vests
+			{ "V_PlateCarrier2_blk", 750, 350}
+
+			//
+			//Items
+			//
+
+			//Equipment
+			//{ "", 50, 5},
+
+			//AID
+			//{ "", 50, 5},
 		};
 	};
 
 	class Defenders {
 		displayName = "Defenders Shop";
 		items[] = {
+			//
+			//GUNS
+			//
+
+			//Pistols
 			{ "hgun_Rook40_F", 100, 75},
 			{ "hgun_P07_F", 115, 80},
 			{ "hgun_PDW2000_F", 180, 100},
-			{ "SMG_02_F", 200, 120},
 			{ "hgun_Pistol_heavy_02_F", 100, 70},
 			{ "hgun_Pistol_heavy_01_F", 175, 125}, 
+
+			//SMG'S
+			{ "SMG_02_F", 200, 120},
 			{ "SMG_01_F", 255, 200},
+
+			//Assault rifles
 			{ "arifle_TRG21_F", 500, 375},
 			{ "arifle_Mk20_plain_F", 800, 425},
-			{ "acc_flashlight", 50, 35}
+			{ "arifle_MXM_Black_F", 1000, 825},
+			{ "arifle_MX_SW_Black_F", 1100, 855},
+			{ "arifle_ARX_blk_F", 1300, 975},
+			{ "arifle_SPAR_03_blk_F", 1500, 1225},
+
+			//LMG'S
+			{ "LMG_Mk200_F", 950, 525},
+			{ "LMG_Zafir_F", 975, 625},	
+
+			//Sniper-Marksman rifles
+			{ "srifle_DMR_03_F", 1800, 1425},
+			{ "srifle_EBR_F", 1900, 1500},
+			{ "srifle_DMR_06_olive_F", 1950, 1525},
+			
+			//Attachments
+			{ "optic_Arco_blk_F", 150, 115},
+			{ "muzzle_snds_H", 65, 35},
+			{ "bipod_01_F_blk", 150, 35},
+			{ "muzzle_snds_65_TI_blk_F", 65, 45},
+			{ "optic_Hamr", 175, 100},
+			{ "optic_MRCO", 175, 100},
+			{ "acc_flashlight", 50, 35},
+
+  
+			//
+			//Wearables
+			//
+
+			//Helmets
+			{ "H_HelmetSpecB_blk", 150, 85},
+			{ "H_Beret_blk", 50, 15},
+			{ "H_Cap_police", 20, 5},
+			{ "H_Bandanna_gry", 20, 5},
+
+			//Goggles
+			{ "G_Balaclava_TI_G_blk_F", 50, 25},
+			{ "G_Bandanna_aviator", 50, 25},
+			{ "G_Aviator", 50, 25},
+			{ "G_Bandanna_blk", 50, 25},
+
+			//Uniforms
+			{ "U_B_CTRG_Soldier_F", 250, 135},
+			{ "U_B_GEN_Commander_F", 250, 135},
+			{ "U_B_CTRG_1", 170, 85},
+			{ "U_B_CombatUniform_mcam_tshirt", 150, 75},
+
+			//Vests
+			{ "V_PlateCarrier2_blk", 750, 350}
+
+			//
+			//Items
+			//
+
+			//Equipment
+			//{ "", 50, 5},
+
+			//AID
+			//{ "", 50, 5},
 		};
 	};
 };
