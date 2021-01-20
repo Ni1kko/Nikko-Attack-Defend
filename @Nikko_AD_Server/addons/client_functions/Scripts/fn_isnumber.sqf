@@ -11,7 +11,7 @@ if(typeName _value != "STRING")then{
 };
 
 private _return = true;
-private _valid = ["48","49","50","51","52","53","54","55","56","57"];
+private _valid = toArray "0123456789";
 
 {
 	if !((str _x) in _valid)exitWith{
