@@ -33,8 +33,6 @@ switcH (_itemCategory) do {
 ShopBoxWeapHolder attachTo [ShopBoxWeapTurnItem, [0,-0.63,0.7]];
 ShopBoxWeapHolder setVectorDirAndUp [[0,0,1],[0,-1,0]];
 
-life_weaponShopItemRotate = _item;
-
 private _dir = getDir ShopBoxWeapTurnItem;
 
 waitUntil { 

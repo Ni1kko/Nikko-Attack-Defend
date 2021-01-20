@@ -35,7 +35,7 @@ switch (_index) do {
 				//any info?
 				if(count _itemInfo > 0)then{
 					_itemList lbAdd format["%1",_itemInfo select 1];
-					_itemList lbSetTextRight [(lbSize _itemList)-1, format["  %1Warpoints", [_x#1] call NikkoClient_script_numberSafe]];
+					_itemList lbSetTextRight [(lbSize _itemList)-1, format["  %1 Warpoints", [_x#1] call NikkoClient_script_numberSafe]];
 					_itemList lbSetValue[(lbSize _itemList)-1,_x select 1];
 					_itemList lbSetData[(lbSize _itemList)-1,_itemInfo select 0];
 					_itemList lbSetPicture[(lbSize _itemList)-1,_itemInfo select 2];

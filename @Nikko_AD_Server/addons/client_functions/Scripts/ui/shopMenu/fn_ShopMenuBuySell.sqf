@@ -17,27 +17,40 @@ private _item = lbData[38403,lbCurSel 38403];
 private _itemInfo = [_item] call NikkoClient_script_itemDetails;
 if (_itemInfo isEqualTo []) exitWith {};
 
+private _shop = (if(missionNamespace getVariable ["NikkoClient_var_isAttacking",false])then{"Atackers"}else{"Defenders"});
+
 if (uiNamespace getVariable["Weapon_Shop_Filter",0] == 1) then {
 	private _playerItems = [] call NikkoClient_script_getPlayerItems;
 	private _indexP = [_item,_playerItems] call NikkoClient_script_index;
 	if (_numberOfItems > ((_playerItems select _indexP) select 1)) exitWith {titleText ["You do not have so many items in your inventory","PLAIN"]};
 
-	private _warpointsCount = 0;
-	private _sellCount = 0;
-	for "_x" from 1 to _numberOfItems do {
-		if ([_item] call NikkoClient_script_removeItem) then {
-			_warpointsCount = _warpointsCount + 0;//still to be added
-			_sellCount = _sellCount + 1;
+	private _sellprice = -1;
+	{ 
+		if ((_x#0) == _item) exitWith {
+			_sellprice = (_x#2);
 		};
-	};
-	if (_sellCount > 0) then {
-		player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) + _warpointsCount)];
-		player say3D "caching";
+	} foreach ([missionConfigFile >> "NikkoClient_CFG_Shops" >> _shop, "items" , []] call BIS_fnc_returnConfigEntry);
 
-		titleText [format["You sold a %1 (%3/%4) for %2Warpoints",_itemInfo select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_sellCount,_numberOfItems],"PLAIN"];
-		[nil,(uiNamespace getVariable["Weapon_Shop_Filter",0])] call NikkoClient_script_weaponShopFilter; //Update the menu.
-	} else {
-		titleText ["Failed to sell","PLAIN"]
+	if(_sellprice > 0)then{
+		private _warpointsCount = 0;
+		private _sellCount = 0;
+		for "_x" from 1 to _numberOfItems do {
+			if ([_item] call NikkoClient_script_removeItem) then {
+				_warpointsCount = _warpointsCount + _sellprice;//still to be added
+				_sellCount = _sellCount + 1;
+			};
+		};
+		if (_sellCount > 0) then {
+			player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) + _warpointsCount)];
+			player say3D "caching";
+
+			titleText [format["You sold a %1 (%3/%4) for %2Warpoints",_itemInfo select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_sellCount,_numberOfItems],"PLAIN"];
+			[nil,(uiNamespace getVariable["Weapon_Shop_Filter",0])] call NikkoClient_script_ShopMenuFilter; //Update the menu.
+		} else {
+			titleText ["Failed to sell","PLAIN"]
+		};
+	} else{
+		titleText ["This item is NOT sellable","PLAIN"]
 	};
 } else {
 	private _price = lbValue[38403,lbCurSel 38403];
@@ -55,12 +68,12 @@ if (uiNamespace getVariable["Weapon_Shop_Filter",0] == 1) then {
 	if (_buyCount > 0) then {
 		player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) - _warpointsCount)];
 		player say3D "caching";
-		titleText [format["You bought a %1 (%3/%4) for %2Warpoints",_itemInfo select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_buyCount,_numberOfItems],"PLAIN"];
+		titleText [format["You bought a %1 (%3/%4) for %2 Warpoints",_itemInfo select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_buyCount,_numberOfItems],"PLAIN"];
 	} else {
 		titleText ["Failed to buy","PLAIN"]
 	};
 };
 
-ctrlSetText[601,format["Availabile: %1Warpoints       ",[(player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe]];
+ctrlSetText[601,format["Availabile: %1 Warpoints       ",[(player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe]];
 
 true

@@ -36,12 +36,12 @@ for "_x" from 1 to _numberofmags do {
 if (_buyCount > 0) then {
 	player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) - _warpointsCount)];
 	player say3D "caching";
-	titleText [format["You bought a %1 (%3/%4) for %2Warpoints",([_item] call NikkoClient_script_itemDetails) select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_buyCount,_numberofmags],"PLAIN"];
+	titleText [format["You bought a %1 (%3/%4) for %2 Warpoints",([_item] call NikkoClient_script_itemDetails) select 1,[_warpointsCount] call NikkoClient_script_numberSafe,_buyCount,_numberofmags],"PLAIN"];
 } else {
 	titleText ["failed to buy","PLAIN"]
 };
 
 //Update balance
-ctrlSetText[601,format["Availabile: %1Warpoints       ",[(player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe]];
+ctrlSetText[601,format["Availabile: %1 Warpoints       ",[(player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe]];
 
 true
