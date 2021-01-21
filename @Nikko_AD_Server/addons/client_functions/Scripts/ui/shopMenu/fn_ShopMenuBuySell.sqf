@@ -38,6 +38,7 @@ if(count(uiNamespace getVariable ["NikkoClient_var_selectedInv",[]]) > 0) then{/
 		player setVariable ["NikkoClient_var_warpoints",((player getVariable ["NikkoClient_var_warpoints",0]) - _price)];
 		player say3D "caching";
 		titleText [format["You bought a your old loadout for %1 Warpoints",[_price] call NikkoClient_script_numberSafe],"PLAIN"];
+		ctrlSetText[601,format["Availabile: %1 Warpoints       ",[(player getVariable ["NikkoClient_var_warpoints",0])] call NikkoClient_script_numberSafe]];
 	} else {
 		titleText ["Failed to buy","PLAIN"]
 	};

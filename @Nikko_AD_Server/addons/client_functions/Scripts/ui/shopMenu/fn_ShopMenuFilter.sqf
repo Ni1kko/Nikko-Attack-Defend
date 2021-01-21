@@ -86,15 +86,29 @@ switch (_index) do {
 
 	case 2: {//previous inv
 		private _listedLoadouts = [];
-
 		((findDisplay 38400) displayCtrl 38405) ctrlSetText "Purchase Again";
 		{ 
-			if !(_x in _listedLoadouts) then { //No duplicates or emptys
+			private _loadout = _x; 
+			if !(_loadout in _listedLoadouts) then { //No duplicates or emptys
 				//No duplicates		
-				_listedLoadouts pushBack _x;
-				_itemList lbAdd format["Previous loadout %1",(_forEachIndex + 1)];
-				_itemList lbSetData[(lbSize _itemList)-1,str _x];
-				//_itemList lbSetPicture[(lbSize _itemList)-1,"textures\previousloadout.paa"];
+				_listedLoadouts pushBack _loadout;
+
+				private _price = 0;
+				{ 
+					private _loadoutItems = _x; 
+					{
+						private _loadoutItem = _x; 
+						{if ((_x#0) == _loadoutItem) exitWith {_price = _price + (_x#1);}} foreach ([missionConfigFile >> "NikkoClient_CFG_Shops" >> _shop, "items" , []] call BIS_fnc_returnConfigEntry);
+					} forEach _loadoutItems;
+				} forEach _loadout;
+				
+				if(_price > 0)then {
+					_itemList lbAdd format["Previous loadout %1",(_forEachIndex + 1)];
+					_itemList lbSetData[(lbSize _itemList)-1,str _loadout];
+					_itemList lbSetTextRight [(lbSize _itemList)-1, format["  %1 Warpoints", [_price] call NikkoClient_script_numberSafe]];
+					_itemList lbSetValue[(lbSize _itemList)-1,_price];
+					//_itemList lbSetPicture[(lbSize _itemList)-1,"textures\previousloadout.paa"];		
+				};
 			};
 		} foreach (profileNamespace getVariable [format["NikkoClient_var_previous%1Inv",_shop],[]]);
 	};

@@ -26,10 +26,7 @@ private _shop = (if(missionNamespace getVariable ["NikkoClient_var_isAttacking",
 private _item = _control lbData _index;
 
 private _itemInfo = [];
-private _itemsInfo = [];
 private _infoDesc = "";
-
-private _price = -1;
 private _priceTemp = 0;
 
 if((uiNamespace getVariable["Weapon_Shop_Filter",0]) in [0,1])then{
@@ -70,6 +67,7 @@ if((uiNamespace getVariable["Weapon_Shop_Filter",0]) in [0,1])then{
 
 if(_itemInfo isEqualTo [] AND _loadout isEqualTo []) exitWith {};
 
+private _price = -1;
 if(_priceTemp != 0)then{
 	_price = _priceTemp;
 };
