@@ -4,8 +4,6 @@
 	Ni1kko@outlook.com
 */
 
-//createDialog "NikkoClient_RSC_ShopMenu";
-
 private _index = param [1,-1,[0]];
 if (_index == -1) exitWith {systemChat "Bad Data Filter"; closeDialog 0;}; //Bad data passing.
 
@@ -17,6 +15,7 @@ uiNamespace setVariable ["Weapon_Shop_Filter",_index];
 private _itemList = ((findDisplay 38400) displayCtrl 38403);
 lbClear _itemList;
 
+((findDisplay 38400) displayCtrl 38406) ctrlShow (_index in [0,1]);
 ((findDisplay 38400) displayCtrl 38407) ctrlShow false;
 ((findDisplay 38400) displayCtrl 38408) ctrlShow false;
 ((findDisplay 38400) displayCtrl 38409) ctrlShow false;
@@ -83,6 +82,24 @@ switch (_index) do {
 				};
 			};
 		} foreach _config;//all player items
+	};
+
+	case 2: {//previous inv
+		private _listedLoadouts = [];
+
+		((findDisplay 38400) displayCtrl 38405) ctrlSetText "Purchase Again";
+		{
+			private _loadout = _x;
+			
+			if !(_loadout in _listedLoadouts) then { //No duplicates or emptys
+				//No duplicates		
+				_listedLoadouts pushBack _loadout;
+				_itemList lbAdd format["Previous loadout %1",(_forEachIndex + 1)];
+
+				_itemList lbSetData[(lbSize _itemList)-1,_loadout];
+				//_itemList lbSetPicture[(lbSize _itemList)-1,_itemInfo select 2];
+			}; 
+		} foreach (profileNamespace getVariable ["NikkoClient_var_previousInv",[]]);
 	};
 };
 

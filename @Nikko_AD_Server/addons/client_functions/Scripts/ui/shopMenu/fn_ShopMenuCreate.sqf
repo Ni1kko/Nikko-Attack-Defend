@@ -18,9 +18,14 @@ ctrlSetText[601,format["Available Warpoints: %1       ",[(player getVariable ["N
 private _filters = ((findDisplay 38400) displayCtrl 38402);
 
 lbClear _filters;
-_filters lbAdd "ShopInv";
-_filters lbAdd "YourInv";
+_filters lbAdd "Shop Inventory";
+_filters lbAdd "Your Inventory";
+_filters lbAdd "Previous Inventory";
 _filters lbSetCurSel 0;
+
+if(count(profileNamespace getVariable ["NikkoClient_var_previousInv",[]]) > 0) then{
+	_filters lbSetCurSel 2;
+};
 
 [] call NikkoClient_script_shopBoxCreate;
 
