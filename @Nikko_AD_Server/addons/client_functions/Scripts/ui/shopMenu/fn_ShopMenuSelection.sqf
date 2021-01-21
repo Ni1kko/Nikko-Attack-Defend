@@ -9,6 +9,8 @@ params [
 ];
 if (isNull _control OR _index == -1) exitWith {closeDialog 0;}; //Bad data
 
+uiNamespace setVariable ["NikkoClient_var_selectedInv",[]];
+
 private _priceTag = ((findDisplay 38400) displayCtrl 38404);
 private _magsList = ((findDisplay 38400) displayCtrl 38407);
 private _magsCount = ((findDisplay 38400) displayCtrl 38408);
@@ -37,35 +39,36 @@ if((uiNamespace getVariable["Weapon_Shop_Filter",0]) in [0,1])then{
 		_infoDesc = format ["<br/><br/>%1",_itemInfo#3];
 	};
 }else{
-	_infoDesc = "<br/><br/> ";
-	private _loadouts = _item;
-	if(typeName _loadouts == "STRING")then{
-		_loadouts = call compile _loadouts;
+	_infoDesc = "<br/><br/>";
+	private _loadout = _item;
+	if(typeName _loadout == "STRING")then{
+		_loadout = call compile _loadout;
 	};
-	
+	uiNamespace setVariable ["NikkoClient_var_selectedInv",_loadout];
+
+	/*
+	[
+		[["H_HelmetSpecB_blk"],["G_Balaclava_TI_G_blk_F"],["U_B_CTRG_Soldier_F"],["arifle_SPAR_03_blk_F"],[],["hgun_Rook40_F"],[]],
+		[["H_HelmetSpecB_blk"],["G_Bandanna_blk"],["U_B_GEN_Commander_F"],["arifle_SPAR_03_blk_F"],[],["hgun_Rook40_F"],[]]
+	]
+	*/
+
 	{
-		private _loadout = _x;
-		/*_loadout params [
-			["_helmets",[],[[]]],
-			["_googels",[],[[]]],
-			["_uniforms",[],[[]]],
-			["_weaponRifles",[],[[]]],
-			["_weaponLaunchers",[],[[]]],
-			["_weaponPistols",[],[[]]],
-			["_items",[],[[]]]
-		];*/
-		{  
+		private _loadoutItems = _x; 
+		{ 
 			private _loadoutItem = _x; 
 			{if ((_x#0) == _loadoutItem) exitWith {
+				private _itemInfo = [_loadoutItem] call NikkoClient_script_itemDetails;
 				_priceTemp = _priceTemp + (_x#1);
-				_infoDesc = _infoDesc + (_x#0) + "<br/>";
+				_infoDesc = _infoDesc + (_itemInfo#1) + "<br/>"; 
 			}} foreach ([missionConfigFile >> "NikkoClient_CFG_Shops" >> _shop, "items" , []] call BIS_fnc_returnConfigEntry);
-		}forEach _loadout;
-	} foreach _loadouts;
-	//[_item,_itemInfo#4] spawn NikkoClient_script_shopBoxDisplay;
+		} forEach _loadoutItems;
+	}forEach _loadout;
+
+	//[_item,_itemInfo#4] spawn NikkoClient_script_shopBoxDisplayUnit;
 };
 
-if(_itemInfo isEqualTo [] AND _itemsInfo isEqualTo []) exitWith {};
+if(_itemInfo isEqualTo [] AND _loadout isEqualTo []) exitWith {};
 
 if(_priceTemp != 0)then{
 	_price = _priceTemp;

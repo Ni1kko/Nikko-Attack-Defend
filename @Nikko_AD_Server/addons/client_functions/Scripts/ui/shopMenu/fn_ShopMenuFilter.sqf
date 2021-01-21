@@ -88,18 +88,15 @@ switch (_index) do {
 		private _listedLoadouts = [];
 
 		((findDisplay 38400) displayCtrl 38405) ctrlSetText "Purchase Again";
-		{
-			private _loadout = _x;
-			
-			if !(_loadout in _listedLoadouts) then { //No duplicates or emptys
+		{ 
+			if !(_x in _listedLoadouts) then { //No duplicates or emptys
 				//No duplicates		
-				_listedLoadouts pushBack _loadout;
+				_listedLoadouts pushBack _x;
 				_itemList lbAdd format["Previous loadout %1",(_forEachIndex + 1)];
-
-				_itemList lbSetData[(lbSize _itemList)-1,_loadout];
-				//_itemList lbSetPicture[(lbSize _itemList)-1,_itemInfo select 2];
-			}; 
-		} foreach (profileNamespace getVariable ["NikkoClient_var_previousInv",[]]);
+				_itemList lbSetData[(lbSize _itemList)-1,str _x];
+				//_itemList lbSetPicture[(lbSize _itemList)-1,"textures\previousloadout.paa"];
+			};
+		} foreach (profileNamespace getVariable [format["NikkoClient_var_previous%1Inv",_shop],[]]);
 	};
 };
 

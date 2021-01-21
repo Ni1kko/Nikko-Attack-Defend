@@ -23,7 +23,7 @@ _filters lbAdd "Your Inventory";
 _filters lbAdd "Previous Inventory";
 _filters lbSetCurSel 0;
 
-if(count(profileNamespace getVariable ["NikkoClient_var_previousInv",[]]) > 0) then{
+if(count(profileNamespace getVariable [format["NikkoClient_var_previous%1Inv",_shop],[]]) > 0) then{
 	_filters lbSetCurSel 2;
 };
 
