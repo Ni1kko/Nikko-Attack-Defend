@@ -62,7 +62,7 @@ if((uiNamespace getVariable["Weapon_Shop_Filter",0]) in [0,1])then{
 		} forEach _loadoutItems;
 	}forEach _loadout;
 
-	//[_item,_itemInfo#4] spawn NikkoClient_script_shopBoxDisplayUnit;
+	[_loadout] spawn NikkoClient_script_shopBoxDisplayUnit;
 };
 
 if(_itemInfo isEqualTo [] AND _loadout isEqualTo []) exitWith {};
